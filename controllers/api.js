@@ -3,7 +3,8 @@ const router = express.Router();
 const Workout = require("../models/workout");
 
 //==============================
-// GET for all workouts.
+// GET for all workouts. With added field of total duration taking
+// sums of all durations nested objects
 //==============================
 router.get("/workouts", (req, res) => {
   Workout.aggregate([
