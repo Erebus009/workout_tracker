@@ -1,11 +1,28 @@
 const express = require('express')
+const logger = require("morgan")
+const controllers = require("./controllers")
+const mongoose = require("mongoose")
+const { urlencoded } = require('body-parser')
+
+const PORT = 3000 || process.env.PORT
+
+
 const app = express();
-const PORT = 3000 || process.env.port 
 
+app.use(logger('dev'))
 
+app.use(express.json())
+app.use(urlencoded({extended:true}))
 
+app.use(express.static("public"))
 
+mongoose.connect("mongodb://localhost/workout", {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+});
 
+app.use(controllers)
 
 
 
