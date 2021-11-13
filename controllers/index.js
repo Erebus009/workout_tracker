@@ -7,9 +7,6 @@ const apiRoute = require('./api')
 router.use("/", viewRoute);
 router.use("/api",apiRoute);
 
-router.use((req,res) => {
-    res.status(404).render('404page')
-})
 
 
-module.exports = router
+module.exports = router;
