@@ -1,5 +1,5 @@
-// exported to be used in routes. 
+// exported to be used in routes.
 
 module.exports = {
-  Workout: require("./workout"),
+  Workout: require("./Workout"),
 };

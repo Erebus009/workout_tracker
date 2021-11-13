@@ -1,32 +1,29 @@
-const express = require('express')
-const logger = require("morgan")
-const controllers = require("./controllers")
-const mongoose = require("mongoose")
-const { urlencoded } = require('body-parser')
+const express = require("express");
+const logger = require("morgan");
+const controllers = require("./controllers");
+const mongoose = require("mongoose");
+const { urlencoded } = require("body-parser");
 
-const PORT = 3000 || process.env.PORT
-
+const PORT = 3000 || process.env.PORT;
 
 const app = express();
 
-app.use(logger('dev'))
+app.use(logger("dev"));
 
-app.use(urlencoded({extended:true}))
-app.use(express.json())
+app.use(urlencoded({ extended: true }));
+app.use(express.json());
 
-
-app.use(express.static("public"))
+app.use(express.static("public"));
 
 mongoose.connect("mongodb://localhost/workout", {
-    useNewUrlParser: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useFindAndModify: false,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
 });
 
-app.use(controllers)
-
-
+app.use(controllers);
 
 app.listen(PORT, () => {
-    console.log(`Listening at http://localhost:${PORT}`);
-})
+  console.log(`Listening at http://localhost:${PORT}`);
+});
