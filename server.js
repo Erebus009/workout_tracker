@@ -4,7 +4,7 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 const { urlencoded } = require("body-parser");
 
-const PORT = 3000 || process.env.PORT;
+const PORT = process.env.PORT|| 3000 ;
 const controllers = require("./controllers");
 const app = express();
 
